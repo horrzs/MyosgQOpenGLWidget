@@ -1,0 +1,53 @@
+IDI_ICON1	ICON    DISCARDABLE	 "script.ico"  //设置程序图标
+//1 24 uac.manifest            //增加权限
+ 
+//在VS编译器增加权限需要在pro文件中加入QMAKE_LFLAGS配置
+//QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
+ 
+#if defined(UNDER_CE)
+#include <winbase.h>
+#else
+#include <winver.h>
+ 
+#endif
+ 
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION 1,0,0,0
+    PRODUCTVERSION 1,0,0,0
+    FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+    FILEFLAGS VS_FF_DEBUG
+#else
+    FILEFLAGS 0x0L
+#endif
+    FILEOS VOS__WINDOWS32
+    FILETYPE VFT_DLL
+    FILESUBTYPE 0x0L
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+            BLOCK "080404b0"
+            BEGIN
+                //公司名称
+                VALUE "CompanyName",      "My Company"
+                //文件说明
+                VALUE "FileDescription",  "Program Name"
+                //内部文件名
+                VALUE "InternalName",     "File Name"
+                //产品名称
+                VALUE "ProductName",      "Product Name"
+                //原始文件名
+                VALUE "OriginalFilename", "closeProxy.exe"
+                //版权
+                VALUE "LegalCopyright",   "Copyright (C) 2024"
+                //产品版本号
+                VALUE "ProductVersion",   "1.0.0.0"
+                //文件版本
+                VALUE "FileVersion",      "1.0.0.0"
+            END
+        END
+        BLOCK "VarFileInfo"
+        BEGIN
+            VALUE "Translation", 0x804, 1200
+        END
+    END
