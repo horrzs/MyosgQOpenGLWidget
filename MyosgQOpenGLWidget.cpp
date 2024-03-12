@@ -16,10 +16,10 @@ MyosgQOpenGLWidget::MyosgQOpenGLWidget(QWidget *parent) : osgQOpenGLWidget(paren
         float aspectRatio = static_cast<float>(size.width()) / static_cast<float>(size.height());
         this->getOsgViewer()->getCamera()->setProjectionMatrixAsPerspective(30.f, aspectRatio, 1.f, 1000.f);
 
-        // osgEarth加载shp文件，LineSymbol不显示
+        // 解决：osgEarth加载shp文件，LineSymbol不显示
         osgEarth::GLUtils::setGlobalDefaults(this->getOsgViewer()->getCamera()->getOrCreateStateSet());
 
-        // osgearth消除近裁剪平面离物体太近时的裁剪问题
+        // 解决：osgearth消除近裁剪平面离物体太近时的裁剪问题
         osgEarth::LogarithmicDepthBuffer buf;
         buf.install(this->getOsgViewer()->getCamera());
     });
